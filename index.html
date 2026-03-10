@@ -6,38 +6,13 @@
     <title>CEP</title>
 </head>
 <body>
-    <form>
+    <form id="cepForm">
         <label for="cep">Digite o CEP:</label>
-        <input type="text" id="cep" name="cep" placeholder="Ex: 12345-678" maxlength="8" required><br> 
+        <input  id="cep" type="text" placeholder="Ex: 12345-678" maxlength="8" required><br> 
         <button type="submit">Buscar</button>
     </form>
     <div id="resultado"></div>
     <script src="script.js"></script>
-    <script>
-     // 1. Selecionar o elemento pelo ID
-    var campoCep = document.getElementById('cep');
-    // 2. Adicionar o event listener para o evento 'blur'(executado quando é retirado o mouse)
-    campoCep.addEventListener('blur', function() {
-        let valorCep  = campoCep.value; // pegar o valor do campoCep
-        fetch("https://viacep.com.br/ws/"+valorCep+"/json/")
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                document.getElementById('logradouro').value = data.logradouro || '';
-                document.getElementById('bairro').value= data.bairro || '';
-                document.getElementById('cidade').value= data.localidade || '';
-                document.getElementById('estado').value= data.estado || '';
-                mudaborda(0)
-            })
-            .catch(error =>mudaborda(1));
-        });
-         function mudaborda(cor){
-            if(cor == 1){
-                campoCep.style.border= "4px solid red";
-            }else{
-                campoCep.style.border="4px solid green";
-            }
-         }
-          </script>
+    
 </body>
 </html>

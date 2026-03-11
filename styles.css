@@ -1,0 +1,103 @@
+/* Reset básico para garantir um visual uniforme */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fundo da página em azul bebê bem suave */
+body {
+    background-color: #e6f2ff; 
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Estilo do formulário (estilo "Cartão") */
+#cepForm {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(102, 178, 255, 0.15); /* Sombra com tom azulado */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 350px;
+}
+
+/* Estilo do texto do Label */
+label {
+    font-weight: 600;
+    color: #5b9bd5; /* Azul médio para manter a leitura agradável */
+    font-size: 14px;
+}
+
+/* Campo de digitação do CEP */
+input#cep {
+    padding: 12px;
+    border: 2px solid #cce5ff; /* Borda azul clara */
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito ao clicar no campo de CEP */
+input#cep:focus {
+    border-color: #66b2ff; 
+    box-shadow: 0 0 5px rgba(102, 178, 255, 0.4);
+}
+
+/* Botão de Busca */
+button {
+    background-color: #99ccff; /* Azul bebê clássico */
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+/* Efeito ao passar o mouse no botão */
+button:hover {
+    background-color: #66b2ff; /* Azul levemente mais escuro */
+}
+
+/* Efeito de "clique" no botão */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Caixa onde o resultado vai aparecer */
+#resultado {
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(102, 178, 255, 0.15);
+    width: 100%;
+    max-width: 350px;
+    display: none; /* Fica oculto até o JavaScript inserir os dados */
+    line-height: 1.5;
+    color: #444;
+    border-left: 4px solid #99ccff;
+}
+
+/* Estilização para as informações que o JS vai gerar */
+#resultado p {
+    margin-bottom: 5px;
+}
+
+#resultado span {
+    font-weight: bold;
+    color: #5b9bd5;
+}

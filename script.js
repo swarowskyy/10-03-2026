@@ -9,7 +9,8 @@ formulario.addEventListener("submit",async(evento)=>{
         alert("Por favor, digite um CEP com oito dígitos");
         return;
     }
-    resultado.innerHTML="Buscando...";
+    //resultado.innerHTML="Buscando...";
+    resultado.innerHTML="<img height='50' src='arquivo gif.gif'></img>"
     try{
         const endereco = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
         const dados = await endereco.json();
@@ -30,13 +31,16 @@ formulario.addEventListener("submit",async(evento)=>{
                 //https://api.open-meteo.com/v1/forecast?latitude=-27.2142&longitude=-49.6431&current_weather=true
                 const clima =  await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
                 const climaJson = await clima.json();
-                console.log(climaJson);
+                //console.log(climaJson);
+                const temperatura = climaJson.current_weather.temperature;
+                const velocVento = climaJson.current_weather.windspeed;
+                const resultadoClima = "<br>Temperatura: "+temperatura+"°C"+"<br>"+"Velocidade do vento: "+velocVento+"km/hr."
+                resultado.innerHTML = (resultadoCEP+resultadoClima);
 
             }else{
                 console.log("Não entrou.")
             }
-            //https://geocoding-api.open-meteo.com/v1/search?name=rio+do+sul&count=1&language=pt&format=json&countryCode=BR
-            resultado.innerHTML=resultadoCEP;
+            
         }
     }catch (error){
         resultado.innerHTML("Erro ao consultar o CEP.")

@@ -21,21 +21,22 @@ formulario.addEventListener("submit", async (evento) => {
             const cidade = dados.localidade;
             const dadosGeo = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cidade)}&count=1&language=pt&format=json&countryCode=BR`);
             const dadosGeoJson = await dadosGeo.json;
-            if(dadosGeoJson.results && dadosGeoJson.results.length>0){
-                const{latitude, longitude}= dadosGeoJson. results[0];
-                console.log(latitude);
-                console.log(longitude);
-            }else{
+            if (dadosGeoJson.results && dadosGeoJson.results.length > 0) {
+                const { latitude, longitude } = dadosGeoJson.results[0];
+                //console.log(latitude);
+                //console.log(longitude);
+                const clima = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
+                const climaJson = await clima.json();
+                
+            } else {
                 console.log("não entrou")
             }
 
-
-
-            //https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cidade)}&count=1&language=pt&format=json&countryCode=BR
+            //https://api.open-meteo.com/v1/forecast?latitude=-27.2142&longitude=-49.6431&current_weather=true
         };
     } catch (error) {
         resultado.innerHTML("Erro ao consultar o CEP.")
 
     }
 
-});
+}); 

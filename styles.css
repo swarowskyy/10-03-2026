@@ -1,103 +1,102 @@
-/* Reset básico para garantir um visual uniforme */
+/* Reset básico */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Fundo da página em azul bebê bem suave */
+/* Fundo azul bebê e alinhamento */
 body {
-    background-color: #e6f2ff; 
+    background-color: #e0f2fe; 
     color: #333;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    padding: 20px;
 }
 
-/* Estilo do formulário (estilo "Cartão") */
+/* Card do Formulário */
 #cepForm {
     background-color: #ffffff;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(102, 178, 255, 0.15); /* Sombra com tom azulado */
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(125, 211, 252, 0.2); 
+    width: 100%;
+    max-width: 380px; /* Um pouco mais largo para caber as novas informações */
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    max-width: 350px;
+    gap: 15px;
 }
 
-/* Estilo do texto do Label */
 label {
+    color: #38bdf8; 
     font-weight: 600;
-    color: #5b9bd5; /* Azul médio para manter a leitura agradável */
-    font-size: 14px;
+    font-size: 15px;
 }
 
-/* Campo de digitação do CEP */
 input#cep {
-    padding: 12px;
-    border: 2px solid #cce5ff; /* Borda azul clara */
+    padding: 12px 15px;
+    border: 2px solid #bae6fd;
     border-radius: 8px;
     font-size: 16px;
     outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-/* Efeito ao clicar no campo de CEP */
 input#cep:focus {
-    border-color: #66b2ff; 
-    box-shadow: 0 0 5px rgba(102, 178, 255, 0.4);
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
 }
 
-/* Botão de Busca */
 button {
-    background-color: #99ccff; /* Azul bebê clássico */
-    color: #ffffff;
+    background-color: #7dd3fc; 
+    color: #0369a1; 
     font-size: 16px;
     font-weight: bold;
     padding: 12px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    margin-top: 5px;
     transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-/* Efeito ao passar o mouse no botão */
 button:hover {
-    background-color: #66b2ff; /* Azul levemente mais escuro */
+    background-color: #38bdf8;
+    color: #ffffff;
 }
 
-/* Efeito de "clique" no botão */
 button:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
-/* Caixa onde o resultado vai aparecer */
+/* Card de Resultados (Endereço + Clima) */
 #resultado {
     margin-top: 20px;
     background-color: #ffffff;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(102, 178, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(125, 211, 252, 0.2);
     width: 100%;
-    max-width: 350px;
-    display: none; /* Fica oculto até o JavaScript inserir os dados */
-    line-height: 1.5;
+    max-width: 380px;
+    border-left: 5px solid #7dd3fc;
+    
+    /* Configurações para o texto do JS ficar bonito */
+    line-height: 1.8; 
+    font-size: 15px;
     color: #444;
-    border-left: 4px solid #99ccff;
+    min-height: 60px; /* Evita que a caixa fique muito pequena ao carregar o GIF */
 }
 
-/* Estilização para as informações que o JS vai gerar */
-#resultado p {
-    margin-bottom: 5px;
+/* Centraliza o GIF de carregamento */
+#resultado img {
+    display: block;
+    margin: 0 auto;
 }
 
-#resultado span {
-    font-weight: bold;
-    color: #5b9bd5;
+/* Formata a div caso ela esteja vazia no início */
+#resultado:empty {
+    display: none;
 }
